@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
-
+:root {
+  --main-background-color: #f4f4f4;
+  --main-color: #3c484e;
+  --header-color: #15302C;
+  --link-color: #026C86;
+  --box-shadow-1: #390000;
+  --box-shadow-2: #391b21;
+  --slide-color-before: #000000;
+  --slide-color: white;
+  --checked-color: #ccc;
+}
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #3c484e;
+  background-color: var(--main-background-color);
+  color: var(--main-color);
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -16,7 +26,7 @@ body {
 
 .Header a {
   text-decoration: none;
-  color: #15302C;
+  color: var(--header-color);
 }
 
 .Main {
@@ -42,7 +52,7 @@ body {
 
 .Characters-card {
   text-decoration: none;
-  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  box-shadow: 8px 14px 38px var(--box-shadow-1), 1px 3px 8px var(--box-shadow-2);
   border-radius: 5px;
   margin: 0 0 20px 0;
   display: block;
@@ -71,7 +81,7 @@ body {
 
 .Characters-item {
   text-decoration: none;
-  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  box-shadow: 8px 14px 38px var(--box-shadow-1), 1px 3px 8px var(--box-shadow-2);
   border-radius: 5px;
   margin: 0 0 20px 0;
   display: block;
@@ -95,7 +105,7 @@ body {
 
 .Characters-item a {
   text-decoration: none;
-  color: #026C86;
+  color: var(--link-color);
 }
 
 @keyframes fade {
@@ -108,8 +118,8 @@ body {
 }
 
 .Main-loading {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border: 4px solid var(--main-background-color);
+  border-top: 4px solid var(--main-background-color);
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -119,4 +129,64 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--slide-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--slide-color-before);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--checked-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--main-background-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
